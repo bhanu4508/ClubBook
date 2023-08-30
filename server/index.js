@@ -46,10 +46,14 @@ app.use('/api/event', eventRoute);
 
 
 const main = async () => {
+
+    mongoose.set('strictQuery', false);
 // Connect to DB
 await mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
     console.log('Connected to DB');
 });
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
