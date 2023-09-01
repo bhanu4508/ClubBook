@@ -95,7 +95,7 @@ const Dashboard = () => {
             <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
               Status : SuperAdmin
             </div>
-          )}33
+          )}
           {user?.superAdmin && userDetails?.adminOfClub?.length == 0 ?(
             <div className="flex flex-col mt-2">
               <button
