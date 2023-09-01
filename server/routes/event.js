@@ -152,7 +152,6 @@ router.post("/:id/register", async (req, res) => {
       participant.participatedEvents.push(event._id);
       event.participants.push(req.user._id);
     }
-
     await event.save();
     await participant.save();
     res.send(event);
@@ -163,21 +162,53 @@ router.post("/:id/register", async (req, res) => {
 });
 
 //remove participants or leave event
+// router.delete("/:id/participants", async (req, res) => {
+//   try {
+//     const event = await Event.findOne({ _id: req.params.id });
+//     const participantId = req.body.participant;
+//     const participant = await User.findOne({ _id: participantId });
+//     event.participants = event.participants.filter(
+//       (id) => id.toString() !== participantId
+//     );
+
+//     participant.participatedEvents = participant.participatedEvents.filter(
+//       (id) => id.toString() !== event._id
+//     );
+//     await event.save();
+//     await participant.save();
+//     res.send(event);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(400).send({ error: err.message });
+//   }
+// });
+
 router.delete("/:id/participants", async (req, res) => {
   try {
+    // Find the event and participants
     const event = await Event.findOne({ _id: req.params.id });
     const participantId = req.body.participant;
     const participant = await User.findOne({ _id: participantId });
+
+    if (!event || !participant) {
+      return res.status(404).json({ error: "Event or participant not found" });
+    }
+
+    // Remove the participant from the participants array of the event
     event.participants = event.participants.filter(
       (id) => id.toString() !== participantId
     );
 
+    // Remove the event from the participatedEvents array of the participant
     participant.participatedEvents = participant.participatedEvents.filter(
-      (id) => id.toString() !== event._id
+      (id) => id.toString() !== event._id.toString()
     );
+
+    // Save the updated event and participant
     await event.save();
     await participant.save();
-    res.send(event);
+
+    res.send(event); // You can send any response as needed
   } catch (err) {
     console.log(err);
     res.status(400).send({ error: err.message });

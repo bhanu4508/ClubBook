@@ -4,6 +4,7 @@ import { useLoginState } from "../state";
 import fetcher from "../utils/fetcher";
 
 const Profile = () => {
+  
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useLoginState(); 

@@ -13,14 +13,14 @@ const createClubInputs = [
 ];
 
 const CreateClub = () => {
+  
   const navigate = useNavigate();
   async function registerClub(formData) {
     const adminEmails = formData.admin_emails
       .split(",")
       .map((email) => email.trim())
       .filter((email) => email !== "");
-
-
+      
     try {
       const response = await fetcher("api/club/", {
         method: "POST",
@@ -29,13 +29,13 @@ const CreateClub = () => {
           admin_emails: adminEmails,
         }),
       });
-
       const data = await response.json();
       if (response.status === 200) {
         alert("Club registration successful");
         // navigate("/login");
         navigate(`/club/${data._id}`);
       } else {
+        console.log(response.status);
         alert("Club registration failed");
       }
     } catch (error) {

@@ -11,12 +11,14 @@ const ViewClubs = () => {
     const response = await fetcher("api/club/", {
       method: "GET",
     });
+
     if (response.status === 200) {
       const data = await response.json();
       setClubDetails(data);
     }
+    
   };
-
+ 
   const handleView = (clubId) => {
     navigate(`/club/${clubId}`);
   };

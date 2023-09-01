@@ -45,9 +45,12 @@ const Participants = () => {
       alert(`${user.name} has been removed from this event`);
       getParticipants();
     }
+    else{
+      alert("there is error");
+    }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     getParticipants();
     getEventDetails();
   }, []);

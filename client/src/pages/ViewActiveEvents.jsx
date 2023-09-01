@@ -24,6 +24,7 @@ const ViewActiveEvents = () => {
   useEffect(() => {
     getEventDetails();
   }, []);
+  
   return (
     eventDetails && (
       <div className="min-h-screen flex w-full justify-center bg-gray-100">

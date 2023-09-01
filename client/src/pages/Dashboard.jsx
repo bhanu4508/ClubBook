@@ -4,6 +4,7 @@ import { useNavigate} from "react-router-dom";
 import { useLoginState } from "../state/slices/loginSlice";
 
 const Dashboard = () => {
+
   const navigate = useNavigate();
   const { user } = useLoginState();
   const [userDetails, setUserDetails] = useState(null);
@@ -75,8 +76,8 @@ const Dashboard = () => {
                         className="uppercase rounded-lg py-2 px-4 bg-gray-800 border-2 border-transparent text-white text-base mr-4 hover:bg-gray-900"
                         onClick={() => navigate(`/event/${event._id}`)}
                       >
-                        View Detailsvvvvvvvv                                                                                          
-                      </button>
+                        View Details                                                                                         
+                      </button>.
                     </div>
                   </div>
                 </div>
@@ -94,7 +95,7 @@ const Dashboard = () => {
             <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
               Status : SuperAdmin
             </div>
-          )}
+          )}33
           {user?.superAdmin && userDetails?.adminOfClub?.length == 0 ?(
             <div className="flex flex-col mt-2">
               <button

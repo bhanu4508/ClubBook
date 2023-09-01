@@ -47,13 +47,14 @@ function App() {
       <BrowserRouter> 
         <Navbar />
         <Routes>
-          <Route path="/" exact element={<Dashboard />} />
           <Route path="/register" exact element={<Register />} />
           <Route path="/login" exact element={<Login />} />
-          <Route path="events" exact element={<ViewActiveEvents />} />
-          <Route path="clubs" exact element={<ViewClubs />} />
+          <Route path="/" exact element={<Dashboard />} />
           <Route path="/dashboard/:id" exact element={<Dashboard />} />
           <Route path="profile/:id" exact element={<Profile />} />
+          <Route path="events" exact element={<ViewActiveEvents />} />
+          <Route path="clubs" exact element={<ViewClubs />} />
+          
           <Route path="/club" exact element={<CreateClub />} />
           <Route path="/club/:id" exact element={<ClubPage />} />
           <Route path="/club/:id/update" exact element={<UpdateClub />} />

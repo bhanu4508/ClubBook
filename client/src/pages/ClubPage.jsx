@@ -26,7 +26,6 @@ const ClubPage = () => {
     const response = await fetcher(`api/club/${id}`, {
       method: "DELETE",
     });
-
     if (response.status === 200) {
       alert("Successfully deleted");
     }
@@ -127,7 +126,6 @@ const ClubPage = () => {
             {user.name}
           </div>
 
-          
           {isClubAdmin && (
             
             <div className="flex flex-col ">

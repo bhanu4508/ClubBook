@@ -12,6 +12,7 @@ const updateClubAdminsInput = [
 ];
 
 const UpdateClub = () => {
+  
   const { id } = useParams();
   const navigate = useNavigate();
   const [clubDetails, setClubDetails] = useState(null);

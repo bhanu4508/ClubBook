@@ -6,6 +6,7 @@ import { useLoginState } from "../state/slices/loginSlice"
 import { DateTime } from "luxon"
 
 const EventPage = () => {
+  
   const { eventId } = useParams()
   const navigate = useNavigate()
   const [eventDetails, setEventDetails] = useState(null)
@@ -111,16 +112,15 @@ const EventPage = () => {
                 <div className="font-medium text-gray-500 text-sm ">
                   {!eventEnded && eventStarted
                     ? "Active"
-                    : eventEnded
+                    : (eventEnded
                     ? "Ended"
-                    : "Starting Soon"}
+                    : "Starting Soon")}
                 </div>
               </div>
               <div className="flex my-2">
                 <span className="text-sm mr-2 font-medium text-gray-500">
                   Result
                 </span>
-
                 <span className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                   {eventDetails.dates.result
                     ? eventDetails.dates.result.split("T")[0]
@@ -142,9 +142,9 @@ const EventPage = () => {
                     <span>
                       {registrationStarted && !eventEnded
                         ? "Opened"
-                        : !registrationStarted && !eventStarted && eventEnded
+                        : (!registrationStarted && !eventStarted && eventEnded
                         ? "Starting soon"
-                        : "Closed"}
+                        : "Closed")}
                     </span>
                   </div>
                   <div className="mt-4 flex">
@@ -208,7 +208,7 @@ const EventPage = () => {
                       <div className="font-medium  text-sm text-gray-500">
                         {prize?.winner?.name
                           ? prize?.winner?.name
-                          : "rishikeshkaroth@gmail.com"}
+                          : "bhanu@gmail.com"}
                       </div>
                     </div>
                   ))}
@@ -269,7 +269,7 @@ const EventPage = () => {
           )}
         </div>
       </div>
-    )
+    )  
   )
 }
 
